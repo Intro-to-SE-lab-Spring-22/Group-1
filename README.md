@@ -3,8 +3,8 @@ Team Members: Michelle Hardin (michellehardin), Philip Haggard (Philip-Haggard),
 Languages: C++, Javascript, Python
 Techniques: Agile Coding Techniques specifically Feature Driven Development (FDD) 
 
-Description: 
+Description: Social Media based on Facebook 
 
-Objective: 
+Objective: Program a website application in Pyhton or Javascript that functions as a social media.
 
-Features: 
+Features: A profile system with user privacy through the use of user names and passwords.  
