@@ -2,7 +2,7 @@
 ### Team Members: 
 Michelle Hardin (michellehardin), Philip Haggard (Philip-Haggard), Connor Brooks (LordSheffield), Peter Tisler (Foxman7364)
 ### Languages: 
-C++, Javascript, Python, possibly HTML and CSS, possibly React and Redux
+C++, Javascript, React, Python, possibly HTML and CSS, 
 
 ### Techniques: 
 Agile Coding Techniques specifically Feature Driven Development (FDD) 
@@ -11,7 +11,7 @@ Agile Coding Techniques specifically Feature Driven Development (FDD)
 Social Media based on Facebook 
 
 ### Objective: 
-Program a website application in Pyhton or Javascript that functions as a social media.
+Program a website application in Python or Javascript that functions as a social media.
 
 ### Features: 
 A profile system with user privacy through the use of user names and passwords. A post feature that allows users to post a block of text and allow other users to comment blocks of text underneath posts. A friend system that allows users to add each other and see each other's posts.  
