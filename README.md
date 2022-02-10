@@ -2,7 +2,7 @@
 ### Team Members: 
 Michelle Hardin (michellehardin), Philip Haggard (Philip-Haggard), Connor Brooks (LordSheffield), Peter Tisler (Foxman7364)
 ### Languages: 
-C++, Javascript, React, Python, possibly HTML and CSS, 
+Javascript, React, Python, possibly HTML and CSS, C++
 
 ### Techniques: 
 Agile Coding Techniques specifically Feature Driven Development (FDD) 
