@@ -1,6 +1,10 @@
 # Group1
 ### Team Members: 
-Michelle Hardin (michellehardin), Philip Haggard (Philip-Haggard), Connor Brooks (LordSheffield), Peter Tisler (Foxman7364)
+Michelle Hardin (michellehardin)
+Philip Haggard (Philip-Haggard)
+Connor Brooks (LordSheffield)
+Peter Tisler (Foxman7364)
+
 ### Languages: 
 Javascript, React, Python, possibly HTML and CSS, C++
 
