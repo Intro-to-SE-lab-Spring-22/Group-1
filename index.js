@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express(); 
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const cors = require("cors");
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
+const dataRoute = require("./routes/routes")
 
 dotenv.config();  // Will load all environment variables from .env
 const mongoString = process.env.MONGO_URL;
@@ -23,16 +25,16 @@ database.once('connected', () => {
 
 //middleware
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(helmet());
 app.use(morgan("common"));
-
-app.get("/",(req,res)=>{
-    res.send("welcome to homepage!")
-})
+app.use(express.static('public'))
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/routes", dataRoute)
 
-app.listen(3000,()=>{
-    console.log(`Server Started at ${3000}`)
+const PORT = process.env.PORT || 3000
+app.listen(PORT,()=>{
+    console.info(`Server Started at ${PORT}`)
 })
