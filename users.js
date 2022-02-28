@@ -1,14 +1,16 @@
 const router = require("express").Router(); 
 
+//Determine that user route is working
 router.get("/",(req,res)=>{
     res.status(201).json("User Route Working")
 })
 
+//Make post 
 router.post('/post', (req, res) => {
     res.send('Post API')
 })
 
-//Finding User
+//Finding User 
 router.get('/:id', getUser, (req, res) =>{
     res.send(req.app_user.name)
 })
