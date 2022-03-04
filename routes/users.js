@@ -55,7 +55,7 @@ router.get('/user', (req, res) => {
 
 //Login 
 router.get('/login', (req, res) => {
-    if(!req.query.email || !req.query.password) {
+    if(!req.query.email && !req.query.password) {
         return res.status(400).send("Missing URL Parameter")
     }
 
@@ -110,7 +110,7 @@ router.put('/updateEmail', (req, res) => {
 
 //Update Name
 router.put('/updateName', (req, res) => {
-    if(!req.query.firstname && req.query.lastname) {
+    if(!req.query.firstname || req.query.lastname) {
         return res.status(400).send("Missing URL Parameter")
     }
 
