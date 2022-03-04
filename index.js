@@ -1,16 +1,8 @@
-const express = require("express");
-const app = express(); 
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const dotenv = require("dotenv");
-const helmet = require("helmet");
-const morgan = require("morgan");
-const cors = require("cors");
-const userRoute = require("./routes/users")
-const authRoute = require("./routes/auth")
-const dataRoute = require("./routes/routes")
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
 
-dotenv.config();  // Will load all environment variables from .env
+//Connect to Database --> see .env for the Database_URL
 const mongoString = process.env.MONGO_URL;
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -23,18 +15,50 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 
-//middleware
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(helmet());
-app.use(morgan("common"));
+let path = require('path')
+let bodyParser = require('body-parser')
+const app = express();
+
+//To parse data 
+app.use(bodyParser.json())
+const routes = require('./routes/routes');
+
+//Testing to see if we have a homepage message
+app.get("/",(req,res)=>res.send("welcome to homepage!")
+)
+
+//app.use('/api', routes)
+let userRoute = require('./routes/users')
+let dataRoute = require('./routes/auth')
+let tryRoute = require('./routes/routes')
+
+//Logs when our API has been accessed 
+app.use((req, res, next) => {
+    console.log(`${new Date().toString()} => ${req.originalUrl}`)
+    next()
+})
+
+app.use(userRoute)
+app.use(dataRoute)
+app.use(tryRoute)
 app.use(express.static('public'))
 
-app.use("/api/users", userRoute);
-app.use("/api/auth", authRoute);
-app.use("/api/routes", dataRoute)
+// Handler for 404 - Resource not found
+app.use((req, res, next) => {
+    res.status(404).send('We think you are lost!')
+    next()
+})
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT,()=>{
+// Handler for 500
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+
+    res.sendFile(path.join(__dirname, './public/500.html'))
+})
+
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => {
     console.info(`Server Started at ${PORT}`)
 })
+
+
