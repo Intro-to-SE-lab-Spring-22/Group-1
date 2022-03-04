@@ -1,0 +1,1 @@
+User Schema includes: First Name, Last Name, Email, Password, Profile Picture, Cover Picture, isAdmin, and Friends Array
