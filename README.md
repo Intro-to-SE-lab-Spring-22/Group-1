@@ -3,7 +3,7 @@
 Michelle Hardin (michellehardin) / Philip Haggard (Philip-Haggard) / Connor Brooks (LordSheffield) / Peter Tisler (Foxman7364)
 
 ### Languages: 
-Javascript, React, Python, possibly HTML and CSS, C++
+Javascript, React, HTML and CSS
 
 ### Techniques: 
 Agile Coding Techniques specifically Feature Driven Development (FDD) 
