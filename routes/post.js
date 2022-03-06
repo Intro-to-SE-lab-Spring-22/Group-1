@@ -1,7 +1,8 @@
-const app = require('express');
-const router = app.Router();
+let express = require('express');
 let usermodel = require('../models/users.model');
 let postmodel = require('../models/postmodel');
+let router = express.Router();
+//var {post, AppUser} = require("../../models");
 
 router.post('/timeline/:userid', async(req, res) => {
     let posts = await postmodel.create({status: req.body.status})
