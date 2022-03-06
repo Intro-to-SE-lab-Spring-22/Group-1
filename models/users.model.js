@@ -1,4 +1,5 @@
 let mongoose = require('mongoose');
+const post = require("./postmodel");
 
 let AppUserSchema = new mongoose.Schema({
     firstname:{
@@ -32,6 +33,10 @@ let AppUserSchema = new mongoose.Schema({
         default:""
     },
     friends:{
+        type:Array, 
+        default:""
+    },
+    posts:{
         type:Array, 
         default:""
     }, 

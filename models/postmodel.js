@@ -1,16 +1,15 @@
-const mongoose = required('mongoose');
+let mongoose = require('mongoose');
 
 
 let postschema = new mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.objectID,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'user'
     },
     status:{
         type: String,
-        min: 1, 
-        max: 400
+        required: function(){return this.status.length >= 1 || this.status.length <= 400}
     },
     image:{
         type: String
