@@ -35,6 +35,7 @@ let AppUserSchema = new mongoose.Schema({
         default:""
     },
     friends:[{type: mongoose.Types.ObjectId, ref:'User'}], 
+    posts:[{type: mongoose.Types.ObjectId, ref:'Post'}],
     isAdmin:{
         type:Boolean,
         default:false
@@ -46,4 +47,4 @@ let AppUserSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('AppUser', AppUserSchema)
+module.exports = mongoose.model('AppUser', AppUserSchema);
