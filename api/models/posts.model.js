@@ -1,9 +1,9 @@
 let mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
-    userID: {
+    username: {
         type: String,
-        required: true
+        require: true
     }, 
     timelinePost: {
         type: String, 

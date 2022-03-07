@@ -26,6 +26,10 @@ let AppUserSchema = new mongoose.Schema({
         require:true,
         min:6
     },
+    username:{
+        type: String,
+        min:3
+    },
     profilePicture:{
         type:String, 
         default:""
@@ -34,7 +38,7 @@ let AppUserSchema = new mongoose.Schema({
         type:String, 
         default:""
     },
-    friends:[{type: mongoose.Types.ObjectId, ref:'User'}], 
+    friends:[{type: mongoose.Types.ObjectId, ref:'AppUser'}], 
     posts:[{type: mongoose.Types.ObjectId, ref:'Post'}],
     isAdmin:{
         type:Boolean,
