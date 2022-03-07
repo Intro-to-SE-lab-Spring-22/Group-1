@@ -1,6 +1,9 @@
 let express = require('express');
 const AppUserModel = require('../models/users.model');
 let router = express.Router();
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+
 
 //Register new user
 router.post('/register', (req, res) => {
@@ -28,15 +31,7 @@ router.get('/findUsers', async (req, res) => {
     res.json(userProf);
 })
 
-/*
-//Find User by ID 
-router.get('/user/:id', async (req, res)=>{
-    const userInfo = await AppUserModel.findById({ _id: req.params.id });
-	res.json(userInfo);
-})
-*/
-
-//GetUserByEmail
+//GetUserByEmail --> maybe used for forgot password
 router.get('/user', (req, res) => {
     if(!req.query.email) {
         return res.status(400).send("Missing URL Parameter: email")
@@ -53,9 +48,26 @@ router.get('/user', (req, res) => {
         })
 })
 
+//Search for user by name
+router.get('/finduserbyName', (req, res) => {
+    if(!req.query.firstname) {
+        return res.status(400).send("Missing URL Parameter: firstname")
+    }
+
+    AppUserModel.findOne({
+        firstname: req.query.firstname
+    }, req.body)
+        .then(doc => {
+         res.json(doc)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+})
+
 //Login 
 router.get('/login', (req, res) => {
-    if(!req.query.email && !req.query.password) {
+    if(!req.query.email || !req.query.password) {
         return res.status(400).send("Missing URL Parameter")
     }
 
@@ -110,7 +122,7 @@ router.put('/updateEmail', (req, res) => {
 
 //Update Name
 router.put('/updateName', (req, res) => {
-    if(!req.query.firstname || req.query.lastname) {
+    if(!req.query.firstname && req.query.lastname) {
         return res.status(400).send("Missing URL Parameter")
     }
 
@@ -146,5 +158,19 @@ router.put('/updatePWD', (req, res) => {
             res.status(500).json(err)
         })
 })
+
+//Add friend
+router.post("/:userId/friends/:friendId", async(req, res) => {
+    let addUser = await AppUserModel.findOneAndUpdate({ _id: req.params.userId }, { $push: { friends: req.params.friendId } }, { new: true }).populate({ path: "friends", select: "-__v" }).select("-__v");
+    let acceptUser = await AppUserModel.findOneAndUpdate({ _id: req.params.friendId }, { $push: { friends: req.params.userId } }, { new: true }).populate({ path: "friends", select: "-__v" }).select("-__v");
+    res.json({ message: "Friend Added", user: addUser});
+});
+
+//Delete friend
+router.delete("/:userId/remove/:friendId", async(req, res) => {
+    let delete1 = await AppUserModel.findOneAndUpdate({ _id: req.params.userId }, { $pull: { friends: req.params.friendId } }, { new: true }).populate({ path: "friends", select: "-__v" }).select("-__v");
+    let delete2 = await AppUserModel.findOneAndUpdate({ _id: req.params.friendId }, { $pull: { friends: req.params.userId } }, { new: true }).populate({ path: "friends", select: "-__v" }).select("-__v");
+    res.json({ message: "Friend Deleted", user: delete1});
+});
 
 module.exports=router
