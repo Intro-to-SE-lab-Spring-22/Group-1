@@ -1,17 +1,41 @@
-const app = require('express');
-const router = app.Router();
-let usermodel = require('../models/users.model');
-let postmodel = require('../models/postmodel');
+let express = require('express');
+let router = express.Router();
+const User = require("../models/users.model");
+const Post = require("../models/posts.model");
 
-router.post('/timeline/:userid', async(req, res) => {
-    let posts = await postmodel.create({status: req.body.status})
-        .catch(err => {res.json({err: 1, message: err}) 
-        
-    });
-    if (!posts){
-        res.json({message: 'cannot create', error: 1})
+// Create a Post --> Working
+router.post('/status', (req, res) => {
+    //req.body
+    if(!req.body){
+        return res.status(400).send('Request Body is missing')
     }
-    let newpost = posts._id
-    let users = await usermodel.findOneAndUpdate({_id: req.body.userid},{$push: {posts: newpost}},{new: true}).populate({path: "posts", select: "-__v"}).populate({path: "friends", select: "-__v"}).select("-__v");
-    res.json(users)
+
+    let userPost = new Post(req.body)
+    userPost.save()
+     .then(doc => {
+         if(!doc || doc.length === 0){
+             return res.status(500).send(doc)
+         }
+         res.status(201).send(doc)
+     })
+     .catch(err => {
+         res.status(500).json(err)
+     })
 })
+
+//Update Post --> not working
+router.put('/status/:id', async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (post.userId === req.body.userId) {
+          await post.updateOne({ $set: req.body });
+          res.status(200).json("the post has been updated");
+        } else {
+          res.status(403).json("you can update only your post");
+        }
+      } catch (err) {
+        res.status(500).json(err);
+      }
+})
+
+module.exports=router
