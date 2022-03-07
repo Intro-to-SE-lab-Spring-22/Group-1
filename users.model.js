@@ -18,6 +18,9 @@ let AppUserSchema = new mongoose.Schema({
         require:true,
         unique:true
     },
+    DOB:{
+        type:Date
+    },
     password:{
         type:String, 
         require:true,
@@ -31,10 +34,7 @@ let AppUserSchema = new mongoose.Schema({
         type:String, 
         default:""
     },
-    friends:{
-        type:Array, 
-        default:""
-    }, 
+    friends:[{type: mongoose.Types.ObjectId, ref:'User'}], 
     isAdmin:{
         type:Boolean,
         default:false
