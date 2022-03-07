@@ -1,30 +1,30 @@
-const mongoose = require("mongoose");
+let mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+let AppUserSchema = new mongoose.Schema({
     firstname:{
         type:String, 
-        required:true, 
+        require:true, 
         min:2,
-        max:20,
-        unique:true
+        max:19
     }, 
     lastname:{
         type:String, 
-        required:true, 
+        require:true, 
         min:2,
-        max:19,
-        unique:true
-    },
+        max:19
+    }, 
     email:{
         type:String, 
-        required:true,
-        max:50, 
+        require:true,
         unique:true
+    },
+    DOB:{
+        type:Date
     },
     password:{
         type:String, 
-        required:true, 
-        min:8
+        require:true,
+        min:6
     },
     profilePicture:{
         type:String, 
@@ -34,10 +34,7 @@ const UserSchema = new mongoose.Schema({
         type:String, 
         default:""
     },
-    friends:{
-        type:Array, 
-        default:""
-    }, 
+    friends:[{type: mongoose.Types.ObjectId, ref:'User'}], 
     isAdmin:{
         type:Boolean,
         default:false
@@ -47,7 +44,6 @@ const UserSchema = new mongoose.Schema({
         required: true,
         default: Date.now 
     }
+})
 
-});
-
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('AppUser', AppUserSchema)
