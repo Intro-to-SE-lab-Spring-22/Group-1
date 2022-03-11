@@ -1,0 +1,94 @@
+.EditU{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f2f5;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.EditUWrapper{
+    width: 70%;
+    height: 70%;
+    display: flex; 
+}
+
+.EditULeft{
+    flex: 1; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+.EditURight{
+    flex: 1; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+.EditULogo{
+    font-size: 50px;
+    font-weight: bold;
+    color: #1775ee;
+    margin-bottom: 10px;
+}
+
+.EditUDesc{
+    font-size: 24px;
+}
+
+.EditUBox{
+    height: 150px;
+    padding: 20px; 
+    background-color: white; 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.EditUInput{
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.EditUInput:focus{
+    outline: none; 
+}
+
+.EditUButton{
+    height: 50px;
+    border-radius: 10px;
+    border: none; 
+    background-color: #1775ee;
+    color: white; 
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.EditUButton:disabled{
+    cursor: not-allowed;
+}
+
+.EditUForgot{
+    text-align: center;
+    color: #1775ee;
+}
+
+.EditURegister{
+    width: 60%;
+    align-self: center;
+    height: 50px;
+    border-radius: 10px;
+    border: none; 
+    background-color: #42b72a;
+    color: white; 
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
