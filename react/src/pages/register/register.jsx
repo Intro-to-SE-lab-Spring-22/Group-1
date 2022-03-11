@@ -12,9 +12,7 @@ export default function Register() {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (passwordAgain.current.value !== password.current.value) {
-      passwordAgain.current.setCustomValidity("Passwords don't match!");
-    } else {
+    
       const user = {
         username: username.current.value,
         email: email.current.value,
@@ -26,7 +24,7 @@ export default function Register() {
       } catch (err) {
         console.log(err);
       }
-    }
+    
   };
 
   return (
@@ -60,13 +58,6 @@ export default function Register() {
               className="loginInput"
               type="password"
               minLength="6"
-            />
-            <input
-              placeholder="Password Again"
-              required
-              ref={passwordAgain}
-              className="loginInput"
-              type="password"
             />
             <button className="loginButton" type="submit">
               Sign Up

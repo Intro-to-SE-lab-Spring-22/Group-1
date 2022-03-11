@@ -16,3 +16,8 @@ export const LoginFailure = (error) => ({
 export const Logout = (userCredentials) => ({
     type:"LOGOUT"
 });
+
+export const deleteAcct = (userCredentials) => ({
+    type:"DELETE_ACCOUNT",
+    payload: user,
+});

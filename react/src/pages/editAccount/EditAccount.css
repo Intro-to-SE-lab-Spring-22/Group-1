@@ -39,7 +39,7 @@
 }
 
 .loginBox{
-    height: 600px;
+    height: 300px;
     padding: 20px; 
     background-color: white; 
     border-radius: 10px;
@@ -69,6 +69,10 @@
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
+}
+
+.loginButton:disabled{
+    cursor: not-allowed;
 }
 
 .loginForgot{

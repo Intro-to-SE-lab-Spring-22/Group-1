@@ -14,4 +14,9 @@ export const logoutCall = async (userCredentials, dispatch)=> {
     const res = await axios.post("/logout", userCredentials);
     dispatch({type:"LOGOUT"})
 }
+
+export const deleteAcct = async (userCredentials, dispatch)=> {
+    const res = await axios.delete("/delete", userCredentials);
+    dispatch({type:"DELETE_ACCOUNT", payload: res.send("User Deleted")})
+}
     

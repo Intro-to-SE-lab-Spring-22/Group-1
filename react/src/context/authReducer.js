@@ -23,6 +23,12 @@ const AuthReducer = (state, action) => {
         user: null,
         isFetching: false,
         error: false,
+      };
+    case "DELETE_ACCOUNT":
+      return{
+        user: action.payload,
+        isFetching: false,
+        error: false,
       }
     };
 }

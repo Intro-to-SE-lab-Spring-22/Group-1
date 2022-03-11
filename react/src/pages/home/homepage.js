@@ -1,7 +1,7 @@
 import React from "react";
 import Topbar from "../../components/topbar/topbar";
 import Leftbar from "../../components/leftsidebar/leftbar"
-import Rightbar from "../../components/rightsidebar/rightbar"
+import Rightbar from "../../components/rightsidebar/Rightbar.jsx"
 import Timeline from "../../components/timeline/timeline"
 import "./home.css"
 

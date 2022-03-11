@@ -80,6 +80,17 @@
     color: #1775ee;
 }
 
+.registerBox{
+    height: 50px;
+    padding: 20px; 
+    background-color: white; 
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .loginRegister{
     width: 60%;
     align-self: center;

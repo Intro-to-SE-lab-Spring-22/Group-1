@@ -11,14 +11,19 @@ export default function Post({post}) {
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  const userID = post.userID; 
+  const userName = post.username;
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users/${post.userID}`);
+      const res = await axios.get('/username/' + userName);
+      console.log(res.data);
       setUser(res.data);
     };
     fetchUser();
   }, [post.userID]);
+
+  console.log("Post User ID: ", post.userID)
 
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
