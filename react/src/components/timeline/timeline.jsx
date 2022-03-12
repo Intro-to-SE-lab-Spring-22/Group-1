@@ -14,9 +14,9 @@ export default function Timeline() {
     const fetchPosts = async () => {
       const res = user.username
         ? await axios.get("/profile/" + user.username)
-        : await axios.get("/TL/" + user._id);
+        : await axios.get("/timeline/" + user._id);
       setPosts(
-        res.data.sort(posts.timestamp)
+        res.data.reverse(posts.timestamp)
       );
     };
     fetchPosts();
