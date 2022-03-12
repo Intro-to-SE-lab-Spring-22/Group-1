@@ -37,6 +37,32 @@
   .postDate{
       font-size: 12px;
   }
+
+  .postEdit{
+    padding: 5px; 
+    background-color: #1877f2; 
+    color: whitesmoke;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .postDelete{
+    padding: 5px; 
+    background-color: #1877f2; 
+    color: whitesmoke;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
   
   .postCenter{
       margin: 20px 0;
@@ -75,4 +101,16 @@
       cursor: pointer;
       border-bottom: 1px dashed gray;
       font-size: 15px;
+  }
+
+  form {
+    width: 50%;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .show {
+    display: block;
   }

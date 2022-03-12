@@ -13,14 +13,15 @@ import { AuthContext } from "../../context/authContext";
 export default function Share() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const desc = useRef();
+  const timelinePost = useRef();
   const [file, setFile] = useState(null);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const userID = user._id; 
     const newPost = {
-      userId: user._id,
-      desc: desc.current.value,
+      username: user.username,
+      timelinePost: timelinePost.current.value,
     };
     if (file) {
       const data = new FormData();
@@ -30,11 +31,11 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("/upload", data);
+        await axios.post("/upload/" + userID, data);
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
+      await axios.post("/status/" + userID, newPost);
       window.location.reload();
     } catch (err) {}
   };
@@ -53,9 +54,11 @@ export default function Share() {
             alt=""
           />
           <input
-            placeholder={"What's in your mind " + user.username + "?"}
+            placeholder={"What's on your mind " + user.username + "?"}
             className="shareInput"
-            ref={desc}
+            type="text"
+            minLength="1"
+            ref={timelinePost}
           />
         </div>
         <hr className="shareHr" />
