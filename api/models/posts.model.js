@@ -5,14 +5,22 @@ const postSchema = mongoose.Schema({
         type: String,
         require: true
     }, 
+    userID:{
+        type: String
+    },
     timelinePost: {
         type: String, 
-        max: 400
+        max: 400,
+        min: 1
     }, 
     image: {
         type: String, 
     }, 
     likes: {
+        type: Array, 
+        default: []
+    },
+    comments: {
         type: Array, 
         default: []
     },
