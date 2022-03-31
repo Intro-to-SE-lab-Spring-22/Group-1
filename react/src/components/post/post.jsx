@@ -1,6 +1,6 @@
 import "./post.css"
-import { MoreVert } from "@material-ui/icons";
-import { useState, useEffect, useContext } from "react"
+import { ControlPointDuplicateTwoTone, MoreVert } from "@material-ui/icons";
+import { useState, useEffect, useContext, useRef } from "react"
 import axios from 'axios'
 import {format} from 'timeago.js'
 import { Link, NavLink, useHistory } from "react-router-dom";
@@ -12,6 +12,7 @@ export default function Post({post}) {
   const [isLiked, setIsLiked] = useState(false);
   const {user} = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const timelinePost = useRef(); 
 
   const userID = post.userID; 
   const userName = post.username;
@@ -24,9 +25,11 @@ export default function Post({post}) {
     setIsLiked(!isLiked);
   };
 
+  //Calling this function will delete a post
   const deletePost = async (e) => {
     e.preventDefault(); 
     if (userID === user._id){
+      //Specifically calls the delete function from the API here
       await axios.delete("/" + postID)
       window.location.reload();
     }
@@ -36,8 +39,10 @@ export default function Post({post}) {
     
   } 
 
+  //This opens or hides the update box when the user clicks "edit"
   function openBox (){
     var text = document.getElementById("popup");
+    console.log("Text: ", text.value);
     var button = document.getElementById("popupButton")
     text.classList.toggle("hide");
     button.classList.toggle("hide");
@@ -45,12 +50,41 @@ export default function Post({post}) {
     button.classList.toggle("show");
   }
 
+  //Edit post will delete the current status, and create a new one 
   const editPost = async (e) => {
     e.preventDefault();
+
+    console.log("Post ID: ", postID)
+    var texts = document.getElementById("popup");
+    console.log("Text: ", texts.value);
+    console.log("User ID: ", userID);
+
+    const newPost = {
+      username: post.username,
+      timelinePost: texts.value,
+    };
+
+    console.log("NEW POST: ", newPost)
+    
     try {
-      await axios.put("/updatePost/" + postID);
+      //First delete the current post and reload the page
+      await axios.delete("/" + postID)
+      window.location.reload();
+      //Then set the post in the update box to be a new post
+      await axios.post("/status/" + userID, newPost);
       window.location.reload();
     } catch (err) {}
+
+  }
+
+  const sharePost = async (e) => {
+    e.preventDefault();
+    console.log("SHARED POST FROM: ", userName)
+  }
+
+  const commentPost = async (e) => {
+    e.preventDefault(); 
+    console.log("Comment Route")
   }
 
     return (
@@ -66,9 +100,17 @@ export default function Post({post}) {
               </div>
               <div className="postTopRight">
                 <button className="postEdit" onClick={openBox}> Edit </button>
-                <input type="text" placeholder={"Update post, " + user.username + "?"} name="popup" id="popup" class="hide"></input>
-                <button className="postEdit" id="popupButton" class="hide" onClick={editPost}>Submit</button>
+                <input 
+                  type="text" 
+                  placeholder={"Update post, " + user.username + "?"} 
+                  name="popup" 
+                  id="popup" 
+                  class="hide" 
+                  ref={timelinePost}> 
+                </input>
+                <button className="postEdit" id="popupButton" class="hide" onClick={editPost}>Update</button>
                 <button className="postEdit" onClick={deletePost}> Delete </button>
+                <button className="postEdit" onClick={sharePost}> Share </button>
               </div>
             </div>
               <div className="postCenter">
