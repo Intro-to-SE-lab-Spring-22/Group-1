@@ -1,6 +1,7 @@
 import "./timeline.css"
 import Share from "../share/share"
 import Post from "../post/post"
+import Comment from "../comment/comment"
 import { useContext, useState, useEffect } from "react"
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -8,6 +9,7 @@ import { AuthContext } from "../../context/authContext";
 
 export default function Timeline() {
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -22,6 +24,16 @@ export default function Timeline() {
     fetchPosts();
   }, [user.username, user._id]);
 
+  useEffect(() => {
+    const fetchComment = async () => {
+      const res = await axios.get(`/getComment/${posts._id}`);
+      //console.log("RES DATA:", res.data);
+      setComments(res.data);
+    };
+    fetchComment();
+  }, []);
+
+  
   return (
     <div className = "timeline">
         <div className ="timelineWrapper">
@@ -29,6 +41,7 @@ export default function Timeline() {
             {posts.map((p) => (
               <Post key={p._id} post={p} />
             ))}
+            
         </div>
     </div>
   )

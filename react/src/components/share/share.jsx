@@ -55,7 +55,7 @@ export default function Share() {
           />
           <input
             placeholder={"What's on your mind " + user.username + "?"}
-            className="shareInput"
+            className="commentInput"
             type="text"
             minLength="1"
             ref={timelinePost}
