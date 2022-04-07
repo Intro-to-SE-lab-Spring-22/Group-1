@@ -41,6 +41,7 @@ let AppUserSchema = new mongoose.Schema({
     },
     friends:[{type: mongoose.Types.ObjectId, ref:'AppUser'}], 
     posts:[{type: mongoose.Types.ObjectId, ref:'Post'}],
+    comments:[{type: mongoose.Types.ObjectId, ref:'Comments'}],
     isAdmin:{
         type:Boolean,
         default:false

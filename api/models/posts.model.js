@@ -22,7 +22,7 @@ const postSchema = mongoose.Schema({
     },
     comments: {
         type: Array, 
-        default: []
+        default: [{type: mongoose.Types.ObjectId, ref:'comments'}],
     },
     timestamp:{
         type: Date, 
