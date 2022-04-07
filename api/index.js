@@ -1,6 +1,12 @@
+//The next three lines are required for startup
+//Dotenv allows us to work within a specified environment
+//Express is a helpful tool for building APIs
+//Mongoose is in reference to MongoDB --> who we are using for database
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const passportLocalMongoose =  require("passport-local-mongoose");
 
 //Connect to Database --> see .env for the Database_URL
 const mongoString = process.env.MONGO_URL;
@@ -15,22 +21,20 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 
+
 let path = require('path')
 let bodyParser = require('body-parser')
+
+//Create web server, refered as app
 const app = express();
 
-//To parse data 
+//We use bodyparse to parse data 
 app.use(bodyParser.json())
-const routes = require('./routes/routes');
 
-//Testing to see if we have a homepage message
-app.get("/",(req,res)=>res.send("welcome to homepage!")
-)
-
-//app.use('/api', routes)
+//This brings to index the routes we've created
+//All of our functions have been listed in users for now. Will have post route as well. 
 let userRoute = require('./routes/users')
-let dataRoute = require('./routes/auth')
-let tryRoute = require('./routes/routes')
+let postRoute = require('./routes/post')
 
 //Logs when our API has been accessed 
 app.use((req, res, next) => {
@@ -38,9 +42,9 @@ app.use((req, res, next) => {
     next()
 })
 
+//The line below allows us to use userRoute
 app.use(userRoute)
-app.use(dataRoute)
-app.use(tryRoute)
+app.use(postRoute)
 app.use(express.static('public'))
 
 // Handler for 404 - Resource not found
@@ -56,7 +60,10 @@ app.use((err, req, res, next) => {
     res.sendFile(path.join(__dirname, './public/500.html'))
 })
 
+//Our app will start at PORT 4000 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
     console.info(`Server Started at ${PORT}`)
 })
+
+
