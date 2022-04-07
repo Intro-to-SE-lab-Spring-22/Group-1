@@ -20,6 +20,16 @@
     display: flex;
     align-items: center;
   }
+
+  .postTopRight {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .postEdit{
+    margin: 5px;
+  }
   
   .postProfileImg {
     width: 32px;
@@ -85,6 +95,11 @@
       display: flex;
       align-items: center;   
   }
+
+  .postBottomRight{
+    display: flex;
+    align-items: center;
+  }
   
   .likeIcon{
       width: 24px;
@@ -103,6 +118,19 @@
       font-size: 15px;
   }
 
+  .postComment{
+    padding: 5px; 
+    background-color: #1877f2; 
+    color: whitesmoke;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
   form {
     width: 50%;
   }
@@ -113,4 +141,9 @@
   
   .show {
     display: block;
+  }
+
+  .commentInput {
+    border: none;
+    width: 85%;
   }
