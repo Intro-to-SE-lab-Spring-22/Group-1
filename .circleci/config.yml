@@ -3,7 +3,9 @@ orbs:
   newman: postman/newman@0.0.2
 jobs:
   build:
-    executor: newman/postman-newman-docker
+    executor:
+      name: newman/postman-newman-docker
+      tag: 5.2.0
     steps:
       - checkout
       - newman/newman-run:
