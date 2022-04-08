@@ -16,9 +16,10 @@ import EditPassword from "./pages/editPassword/EditPassword";
 
 function App() {
 
-  const {user} = useContext(AuthContext)
+  //This gets the user
+  const {user} = useContext(AuthContext);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //Below are the different site pages for our platform
 
   return (
     <Router>

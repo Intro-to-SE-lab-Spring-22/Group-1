@@ -146,4 +146,17 @@
   .commentInput {
     border: none;
     width: 85%;
+    height: 30px;
+    vertical-align: middle;
+    margin-top: 10px;
+  }
+
+  .commentHR {
+    margin: 20px 0;
+    background-color: #1877f2;
+  }
+
+  .seperateComments {
+    height: 40px;
+    vertical-align: middle;
   }
