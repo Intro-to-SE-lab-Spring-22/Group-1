@@ -14,11 +14,18 @@ export default function EditUsername() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+
+        //Get the current user's username
         const currentUser = user.username;
+
+        //Get the new username from the referenced username 
         const updateUser = {
           username: username.current.value
         };
-        console.log("updateUser: ", updateUser)
+
+        //console.log("updateUser: ", updateUser)
+
+        //Update the name and refresh to login name
         try {
           const res = await axios.put('/updateName/' + currentUser, updateUser);
           console.log(res.data)

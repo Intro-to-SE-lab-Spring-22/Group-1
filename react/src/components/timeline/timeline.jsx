@@ -28,7 +28,9 @@ export default function Timeline() {
     const fetchComment = async () => {
       const res = await axios.get(`/getComment/${posts._id}`);
       //console.log("RES DATA:", res.data);
-      setComments(res.data);
+      setComments(
+        res.data.reverse(comments.timestamp)
+      );
     };
     fetchComment();
   }, []);

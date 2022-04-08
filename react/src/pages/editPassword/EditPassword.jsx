@@ -10,11 +10,16 @@ export default function EditPassword() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        const currentUser = user._id;
-        const updateUser = password.current.value
-        console.log("currentUser: ", currentUser)
-        console.log("updateUser: ", updateUser)
 
+        //Get the current users ID 
+        const currentUser = user._id;
+
+        //Get the current value in the referenced password text box
+        const updateUser = password.current.value
+        //console.log("currentUser: ", currentUser)
+        //console.log("updateUser: ", updateUser)
+
+        //If the referenced password length meets the minimum length, the update the password and go back to login page
         if (updateUser.length > 5){
             try {
                 const res = await axios.post('/updatePWD/' + currentUser + '/' + updateUser);

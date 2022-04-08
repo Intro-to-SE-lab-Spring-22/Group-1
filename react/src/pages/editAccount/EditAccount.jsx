@@ -9,21 +9,26 @@ export default function EditAccount() {
     const history = useHistory(); 
 
     //Start Functions
+
+    //Go to the edit username page
     const editUsername = async (e) => {
         e.preventDefault();
         history.push('/editUsername');
     }
 
+    //Go to the edit password page
     const editPassword = async (e) => {
         e.preventDefault();
         history.push('/editPassword');
     }
 
+    //Go to the edit email page
     const editEmail = async (e) => {
         e.preventDefault();
         history.push('/editEmail');
     }
 
+    //Go back to the homepage
     const backToHome = async (e) => {
         e.preventDefault();
         history.push('/');

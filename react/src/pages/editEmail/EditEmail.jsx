@@ -12,13 +12,21 @@ export default function EditEmail() {
     const email = useRef();
     const history = useHistory();
 
+    //Submit handler for updating and editing email 
     const submitHandler = async (e) => {
         e.preventDefault();
+
+        //Get the current logged in user's email
         const currentUser = user.email;
+
+        //Get the value entered in the referenced email text box
         const updateUser = {
           email: email.current.value
         };
-        console.log("updateUser: ", updateUser)
+
+        //console.log("updateUser: ", updateUser)
+        
+        //Try to update email then move back to the login page
         try {
           const res = await axios.put('/updateEmail/' + currentUser, updateUser);
           console.log(res.data)

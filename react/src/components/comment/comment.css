@@ -1,0 +1,19 @@
+.commentTop{
+    display: flex;
+    font-size: smaller;
+}
+
+.Test{
+    border: none;
+    display: flex;
+    vertical-align: middle;
+    margin-left: 30px;
+    margin-bottom: 5 0;
+}
+
+.commentUser{
+    border: none;
+    display: flex;
+    vertical-align: middle;
+    margin-left: 30px;
+}

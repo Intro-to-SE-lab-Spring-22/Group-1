@@ -13,11 +13,14 @@ export default function Register() {
   const handleClick = async (e) => {
     e.preventDefault();
     
+      //Creates a new user object from the entered information in the register page text boxes
       const user = {
         username: username.current.value,
         email: email.current.value,
         password: password.current.value,
       };
+
+      //Try to register them or log the error
       try {
         await axios.post("/reg", user);
         history.push("/login");
