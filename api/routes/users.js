@@ -185,12 +185,12 @@ router.delete("/:userId/remove/:friendId", async(req, res) => {
     res.json({ message: "Friend Deleted", user: delete1});
 });
 
-//logout 
+// Checking logout functions 
 router.post("/logout", (req,res) => {
     res.send("Logging Out")
 })
 
-//Trying to get a user
+//Trying to get a user with the query functions
 router.get("/users", async (req, res) => {
     const userId = req.query.userId;
     const username = req.query.username;

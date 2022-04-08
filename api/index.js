@@ -17,6 +17,7 @@ database.on('error', (error) => {
     console.log(error)
 })
 
+//Let's us know that the database has been connected -- logs this to the console
 database.once('connected', () => {
     console.log('Database Connected');
 })
@@ -32,7 +33,6 @@ const app = express();
 app.use(bodyParser.json())
 
 //This brings to index the routes we've created
-//All of our functions have been listed in users for now. Will have post route as well. 
 let userRoute = require('./routes/users')
 let postRoute = require('./routes/post')
 
@@ -42,7 +42,7 @@ app.use((req, res, next) => {
     next()
 })
 
-//The line below allows us to use userRoute
+//The line below allows app to use the specified routes
 app.use(userRoute)
 app.use(postRoute)
 app.use(express.static('public'))
