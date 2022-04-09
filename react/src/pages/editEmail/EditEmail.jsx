@@ -48,6 +48,7 @@ export default function EditEmail() {
               <form className="EditUBox" onSubmit={submitHandler}>
                 <input
                   placeholder="Email"
+                  data-testid="email-input"
                   required
                   ref={email}
                   type="email"

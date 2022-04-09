@@ -49,6 +49,7 @@ export default function Register() {
             />
             <input
               placeholder="Email"
+              data-testid="email-input"
               required
               ref={email}
               className="loginInput"
@@ -57,6 +58,7 @@ export default function Register() {
             <input
               placeholder="Password"
               required
+              data-testid="password-input"
               ref={password}
               className="loginInput"
               type="password"

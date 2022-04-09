@@ -47,6 +47,7 @@ export default function EditUsername() {
               <form className="EditUBox" onSubmit={submitHandler}>
                 <input
                   placeholder="Username"
+                  data-testid="username-input"
                   required
                   ref={username}
                   className="EditUInput"

@@ -44,6 +44,7 @@ export default function EditPassword() {
               <form className="EditPBox" onSubmit={submitHandler}>
                 <input
                   placeholder="New Password"
+                  data-testid="password-input"
                   required
                   ref={password}
                   type="password"
