@@ -44,8 +44,8 @@ export default function Login(){
                 </div>
                 <div className='loginRight'>
                     <form className="loginBox" onSubmit={handleClick}>
-                        <input placeholder="Email" type="email" required className="loginInput" ref={email} />
-                        <input placeholder="Password" type="password" required minLength="6" className="loginInput" ref={password}/>
+                        <input placeholder="Email" type="email" data-testid="email-input" required className="loginInput" ref={email} />
+                        <input placeholder="Password" type="password" data-testid="password-input" required minLength="6" className="loginInput" ref={password}/>
                         <button className="loginButton" type="submit" disabled={isFetching}>{isFetching ? <CircularProgress size="20px" />: "Log In"} </button>
                         <span className="loginForgot">Forgot Password?</span>
                     </form>    
@@ -53,6 +53,7 @@ export default function Login(){
                     <button className="loginRegister"> {isFetching ? <CircularProgress size="20px" />: "Create New Account"} </button>
                     </form>
                 </div> 
+                
             </div>
         </div>
     )
