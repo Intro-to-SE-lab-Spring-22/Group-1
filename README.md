@@ -6,10 +6,10 @@ Michelle Hardin (michellehardin) / Philip Haggard (Philip-Haggard) / Connor Broo
 Javascript using React, HTML and CSS
 
 ### Techniques: 
-Agile Coding Techniques specifically Feature Driven Development (FDD) 
+Agile Feature Driven Development 
 
 ### Description: 
-Social Media based on Facebook 
+Social Media Platform based on Facebook 
 
 ### Objective: 
 Program a website application in Javascript that functions as a social media platform. 
